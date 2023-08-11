@@ -1,0 +1,90 @@
+group:
+  name: test-group
+  users:
+    - test-user
+
+limit:
+  pod:
+    max:
+      enable: false
+      cpu: 2
+      memory: 1Gi
+    min:
+      enable: false
+      cpu: 200m
+      memory: 6Mi
+  container:
+    max:
+      enable: false
+      cpu: 2
+      memory: 1Gi
+    min:
+      enable: false
+      cpu: 100m
+      memory: 4Mi
+    default:
+      cpu: 300m
+      memory: 200Mi
+    defaultRequest:
+      cpu: 200m
+      memory: 100Mi
+    maxLimitRequestRatio:
+      cpu: 10
+  image:
+    max:
+      storage: 1Gi
+      image-tags: 20
+      images: 30
+
+resourcequota:
+  # Resources allowed
+  count:
+    configmaps: 20
+    pods: 10
+    replicationcontrollers: 5
+    secrets: 20
+    services:
+      count: 10 # Total number of services
+      loadbalancers: 0 # Total number of loadbalancers type service
+      nodeports: 0 # Total number of nodeports type service
+  # Computing resources
+  computing:
+    requests:
+      cpu: 1
+      memory: 1Gi
+    limits:
+      cpu: 2
+      memory: 2Gi
+  # Storage consumptions
+  storage:
+    # The total number of persistent volume claims that can exist in the project
+    persistentvolumeclaims: 4
+    requests:
+      # The sum of storage requests across all persistent volume claims
+      storage: 50Gi
+      # The sum of ephemeral storage requests across all pods in a non-terminal
+      # state cannot exceed this value
+      ephemeral-storage: 2Gi
+    limits:
+      # The sum of ephemeral storage limits across all pods in a non-terminal
+      # state cannot exceed this value.
+      ephemeral-storage: 4Gi
+  # StorageClass consumptions
+  storageclass:
+    # The total number of persistent volume claims with a matching storage class
+    # that can exist in the project
+    persistentvolumeclaims:
+      localblock: 0
+      cephfs: 0
+      ceph-rbd: 10 # Default storage class
+      ceph-rgw: 0
+      noobaa-io: 0
+    # The sum of storage requests across all persistent volume claims in any
+    # state that have a matching storage class, cannot exceed this value
+    requests:
+      storage:
+        localblock: 0Gi
+        cephfs: 0Gi
+        ceph-rbd: 50Gi # Default storage class
+        ceph-rgw: 0Gi
+        noobaa-io: 0Gi

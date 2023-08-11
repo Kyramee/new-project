@@ -1,0 +1,10 @@
+apiVersion: v2
+name: new-project
+version: 0.0.1
+appVersion: v0.0.0
+description: Setup a new project and add the correct permission for the users
+home: https://github.com/Kyramee/netbox-openshift
+maintainers:
+- name: Adrien Côté-Laferrière
+  email: adrienthereader@gmail.com
+  url: https://github.com/Kyramee

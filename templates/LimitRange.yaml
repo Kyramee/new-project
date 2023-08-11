@@ -1,0 +1,41 @@
+apiVersion: "v1"
+kind: "LimitRange"
+metadata:
+  name: "resource-limits"
+spec:
+  limits:
+    - type: "Pod"
+      {{- if .Values.limit.pod.max.enable }}
+      max:
+        cpu: {{ .Values.limit.pod.max.cpu | quote }}
+        memory: {{ .Values.limit.pod.max.memory | quote }}
+      {{- end }}
+      {{- if .Values.limit.pod.min.enable }}
+      min:
+        cpu: {{ .Values.limit.pod.min.cpu | quote }}
+        memory: {{ .Values.limit.pod.min.memory | quote }}
+      {{- end }}
+    - type: "Container"
+      {{- if .Values.limit.container.max.enable }}
+      max:
+        cpu: {{ .Values.limit.container.max.cpu | quote }}
+        memory: {{ .Values.limit.container.max.memory | quote }}
+      {{- end }}
+      {{- if .Values.limit.container.min.enable }}
+      min:
+        cpu: {{ .Values.limit.container.min.cpu | quote }}
+        memory: {{ .Values.limit.container.min.memory | quote }}
+      {{- end }}
+      default:
+        cpu: {{ .Values.limit.container.default.cpu | quote }}
+        memory: {{ .Values.limit.container.default.memory | quote }}
+      defaultRequest:
+        cpu: {{ .Values.limit.container.defaultRequest.cpu | quote }}
+        memory: {{ .Values.limit.container.defaultRequest.memory | quote }}
+      maxLimitRequestRatio:
+        cpu: {{ .Values.limit.container.maxLimitRequestRatio.cpu | quote }}
+    - type: openshift.io/Image
+      max:
+        storage: {{ .Values.limit.image.max.storage | quote }}
+        openshift.io/image-tags: {{ .Values.limit.image.max.image-tags | quote }}
+        openshift.io/images: {{ .Values.limit.image.max.images | quote }}

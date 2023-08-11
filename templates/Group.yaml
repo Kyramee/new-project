@@ -1,0 +1,6 @@
+apiVersion: user.openshift.io/v1
+kind: Group
+metadata:
+  name: {{ .Values.group.name | quote }}
+users:
+  {{- toYaml .Values.group.users | nindent 2 }}

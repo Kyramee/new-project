@@ -1,0 +1,48 @@
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: example
+  namespace: adrien-test
+spec:
+  hard:
+    ## Resources count
+    configmaps: {{ .Values.resourcequota.count.configmaps | quote }}
+    pods: {{ .Values.resourcequota.count.pods | quote }}
+    replicationcontrollers: {{ .Values.resourcequota.count.replicationcontrollers | quote }}
+    secrets: {{ .Values.resourcequota.count.secrets | quote }}
+    services: {{ .Values.resourcequota.count.services.count | quote }}
+    services.loadbalancers: {{ .Values.resourcequota.count.services.loadbalancers | quote }}
+    services.nodeports: {{ .Values.resourcequota.count.services.nodeports | quote }}
+    ## Computing resources
+    requests.cpu: {{ .Values.resourcequota.computing.requests.cpu | quote }}
+    requests.memory: {{ .Values.resourcequota.computing.requests.memory | quote }}
+    limits.cpu: {{ .Values.resourcequota.computing.limits.cpu | quote }}
+    limits.memory: {{ .Values.resourcequota.computing.limits.memory | quote }}
+    ## Storage consumptions
+    # The total number of persistent volume claims that can exist in the project
+    persistentvolumeclaims: {{ .Values.resourcequota.storage.persistentvolumeclaims | quote }}
+    # The sum of storage requests across all persistent volume claims
+    requests.storage: {{ .Values.resourcequota.storage.requests.storage | quote }}
+
+    # The sum of ephemeral storage requests across all pods in a non-terminal
+    # state cannot exceed this value
+    requests.ephemeral-storage: {{ .Values.resourcequota.storage.requests.ephemeral-storage | quote }}
+    # The sum of ephemeral storage limits across all pods in a non-terminal
+    # state cannot exceed this value.
+    limits.ephemeral-storage: {{ .Values.resourcequota.storage.limits.ephemeral-storage | quote }}
+
+    # The total number of persistent volume claims with a matching storage class
+    # that can exist in the project
+    localblock.storageclass.storage.k8s.io/persistentvolumeclaims: {{ .Values.resourcequota.storageclass.persistentvolumeclaims.localblock | quote }}
+    ocs-storagecluster-cephfs.storageclass.storage.k8s.io/persistentvolumeclaims: {{ .Values.resourcequota.storageclass.persistentvolumeclaims.cephfs | quote }}
+    ocs-storagecluster-ceph-rbd.storageclass.storage.k8s.io/persistentvolumeclaims: {{ .Values.resourcequota.storageclass.persistentvolumeclaims.ceph-rbd | quote }}
+    ocs-storagecluster-ceph-rgw.storageclass.storage.k8s.io/persistentvolumeclaims: {{ .Values.resourcequota.storageclass.persistentvolumeclaims.ceph-rgw | quote }}
+    openshift-storage.noobaa.io.storageclass.storage.k8s.io/persistentvolumeclaims: {{ .Values.resourcequota.storageclass.persistentvolumeclaims.noobaa-io | quote }}
+
+    # The sum of storage requests across all persistent volume claims in any
+    # state that have a matching storage class, cannot exceed this value
+    localblock.storageclass.storage.k8s.io/requests.storage: {{ .Values.resourcequota.storageclass.requests.storage.localblock | quote }}
+    ocs-storagecluster-cephfs.storageclass.storage.k8s.io/requests.storage: {{ .Values.resourcequota.storageclass.requests.storage.cephfs | quote }}
+    ocs-storagecluster-ceph-rbd.storageclass.storage.k8s.io/requests.storage: {{ .Values.resourcequota.storageclass.requests.storage.ceph-rbd | quote }}
+    ocs-storagecluster-ceph-rgw.storageclass.storage.k8s.io/requests.storage: {{ .Values.resourcequota.storageclass.requests.storage.ceph-rgw | quote }}
+    openshift-storage.noobaa.io.storageclass.storage.k8s.io/requests.storage: {{ .Values.resourcequota.storageclass.requests.storage.noobaa-io | quote }}
