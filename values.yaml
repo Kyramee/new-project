@@ -64,11 +64,11 @@ resourcequota:
       storage: 50Gi
       # The sum of ephemeral storage requests across all pods in a non-terminal
       # state cannot exceed this value
-      ephemeral-storage: 2Gi
+      ephemeralStorage: 2Gi
     limits:
       # The sum of ephemeral storage limits across all pods in a non-terminal
       # state cannot exceed this value.
-      ephemeral-storage: 4Gi
+      ephemeralStorage: 4Gi
   # StorageClass consumptions
   storageclass:
     # The total number of persistent volume claims with a matching storage class
@@ -76,15 +76,15 @@ resourcequota:
     persistentvolumeclaims:
       localblock: 0
       cephfs: 0
-      ceph-rbd: 10 # Default storage class
-      ceph-rgw: 0
-      noobaa-io: 0
+      cephRbd: 10 # Default storage class
+      cephRgw: 0
+      noobaaIo: 0
     # The sum of storage requests across all persistent volume claims in any
     # state that have a matching storage class, cannot exceed this value
     requests:
       storage:
         localblock: 0Gi
         cephfs: 0Gi
-        ceph-rbd: 50Gi # Default storage class
-        ceph-rgw: 0Gi
-        noobaa-io: 0Gi
+        cephRbd: 50Gi # Default storage class
+        cephRgw: 0Gi
+        noobaaIo: 0Gi

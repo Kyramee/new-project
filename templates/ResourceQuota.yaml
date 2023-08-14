@@ -26,23 +26,23 @@ spec:
 
     # The sum of ephemeral storage requests across all pods in a non-terminal
     # state cannot exceed this value
-    requests.ephemeral-storage: {{ .Values.resourcequota.storage.requests.ephemeral-storage | quote }}
+    "requests.ephemeral-storage": {{ .Values.resourcequota.storage.requests.ephemeralStorage | quote }}
     # The sum of ephemeral storage limits across all pods in a non-terminal
     # state cannot exceed this value.
-    limits.ephemeral-storage: {{ .Values.resourcequota.storage.limits.ephemeral-storage | quote }}
+    "limits.ephemeral-storage": {{ .Values.resourcequota.storage.limits.ephemeralStorage | quote }}
 
     # The total number of persistent volume claims with a matching storage class
     # that can exist in the project
-    localblock.storageclass.storage.k8s.io/persistentvolumeclaims: {{ .Values.resourcequota.storageclass.persistentvolumeclaims.localblock | quote }}
-    ocs-storagecluster-cephfs.storageclass.storage.k8s.io/persistentvolumeclaims: {{ .Values.resourcequota.storageclass.persistentvolumeclaims.cephfs | quote }}
-    ocs-storagecluster-ceph-rbd.storageclass.storage.k8s.io/persistentvolumeclaims: {{ .Values.resourcequota.storageclass.persistentvolumeclaims.ceph-rbd | quote }}
-    ocs-storagecluster-ceph-rgw.storageclass.storage.k8s.io/persistentvolumeclaims: {{ .Values.resourcequota.storageclass.persistentvolumeclaims.ceph-rgw | quote }}
-    openshift-storage.noobaa.io.storageclass.storage.k8s.io/persistentvolumeclaims: {{ .Values.resourcequota.storageclass.persistentvolumeclaims.noobaa-io | quote }}
+    "localblock.storageclass.storage.k8s.io/persistentvolumeclaims": {{ .Values.resourcequota.storageclass.persistentvolumeclaims.localblock | quote }}
+    "ocs-storagecluster-cephfs.storageclass.storage.k8s.io/persistentvolumeclaims": {{ .Values.resourcequota.storageclass.persistentvolumeclaims.cephfs | quote }}
+    "ocs-storagecluster-ceph-rbd.storageclass.storage.k8s.io/persistentvolumeclaims": {{ .Values.resourcequota.storageclass.persistentvolumeclaims.cephRbd | quote }}
+    "ocs-storagecluster-ceph-rgw.storageclass.storage.k8s.io/persistentvolumeclaims": {{ .Values.resourcequota.storageclass.persistentvolumeclaims.cephRgw | quote }}
+    "openshift-storage.noobaa.io.storageclass.storage.k8s.io/persistentvolumeclaims": {{ .Values.resourcequota.storageclass.persistentvolumeclaims.noobaaIo | quote }}
 
     # The sum of storage requests across all persistent volume claims in any
     # state that have a matching storage class, cannot exceed this value
-    localblock.storageclass.storage.k8s.io/requests.storage: {{ .Values.resourcequota.storageclass.requests.storage.localblock | quote }}
-    ocs-storagecluster-cephfs.storageclass.storage.k8s.io/requests.storage: {{ .Values.resourcequota.storageclass.requests.storage.cephfs | quote }}
-    ocs-storagecluster-ceph-rbd.storageclass.storage.k8s.io/requests.storage: {{ .Values.resourcequota.storageclass.requests.storage.ceph-rbd | quote }}
-    ocs-storagecluster-ceph-rgw.storageclass.storage.k8s.io/requests.storage: {{ .Values.resourcequota.storageclass.requests.storage.ceph-rgw | quote }}
-    openshift-storage.noobaa.io.storageclass.storage.k8s.io/requests.storage: {{ .Values.resourcequota.storageclass.requests.storage.noobaa-io | quote }}
+    "localblock.storageclass.storage.k8s.io/requests.storage": {{ .Values.resourcequota.storageclass.requests.storage.localblock | quote }}
+    "ocs-storagecluster-cephfs.storageclass.storage.k8s.io/requests.storage": {{ .Values.resourcequota.storageclass.requests.storage.cephfs | quote }}
+    "ocs-storagecluster-ceph-rbd.storageclass.storage.k8s.io/requests.storage": {{ .Values.resourcequota.storageclass.requests.storage.cephRbd | quote }}
+    "ocs-storagecluster-ceph-rgw.storageclass.storage.k8s.io/requests.storage": {{ .Values.resourcequota.storageclass.requests.storage.cephRgw | quote }}
+    "openshift-storage.noobaa.io.storageclass.storage.k8s.io/requests.storage": {{ .Values.resourcequota.storageclass.requests.storage.noobaaIo | quote }}
