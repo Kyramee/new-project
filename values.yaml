@@ -33,7 +33,7 @@ limit:
   image:
     max:
       storage: 1Gi
-      image-tags: 20
+      imageTags: 20
       images: 30
 
 resourcequota:

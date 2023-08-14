@@ -34,8 +34,8 @@ spec:
         memory: {{ .Values.limit.container.defaultRequest.memory | quote }}
       maxLimitRequestRatio:
         cpu: {{ .Values.limit.container.maxLimitRequestRatio.cpu | quote }}
-    - type: openshift.io/Image
+    - type: "openshift.io/Image"
       max:
         storage: {{ .Values.limit.image.max.storage | quote }}
-        openshift.io/image-tags: {{ .Values.limit.image.max.image-tags | quote }}
-        openshift.io/images: {{ .Values.limit.image.max.images | quote }}
+        "openshift.io/image-tags": {{ .Values.limit.image.max.imageTags | quote }}
+        "openshift.io/images": {{ .Values.limit.image.max.images | quote }}
