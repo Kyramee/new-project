@@ -1,7 +1,7 @@
 apiVersion: "v1"
 kind: "LimitRange"
 metadata:
-  name: "Individual resource limits"
+  name: "individual-resource-limits"
 spec:
   limits:
     - type: "Pod"

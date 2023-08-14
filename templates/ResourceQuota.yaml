@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: ResourceQuota
 metadata:
-  name: "Total project limits"
+  name: "total-resource-limits"
 spec:
   hard:
     ## Resources count
