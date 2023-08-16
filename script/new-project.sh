@@ -47,7 +47,7 @@ fi
 
 ## Set working path at thr root of the chart
 CHART_PATH="$(dirname -- "${BASH_SOURCE[0]}")"       # relative
-CHART_PATH="$(cd -- "$CHART_PATH" && pwd)/../.."    # absolutized and normalized
+CHART_PATH="$(cd -- "$CHART_PATH" && pwd)/.."    # absolutized and normalized
 if [[ -z "$CHART_PATH" ]] ; then
   # error; for some reason, the path is not accessible
   # to the script (e.g. permissions re-evaled after suid)
