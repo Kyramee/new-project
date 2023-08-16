@@ -1,5 +1,4 @@
 group:
-  name: test-group
   users:
     - test-user
 

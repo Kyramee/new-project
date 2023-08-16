@@ -1,3 +1,3 @@
 ```sh
-helm install test-project ./ -f values.yaml --namespace test-project --create-namespace
+helm install test-project ./ -f values.yaml --namespace adrien-test1 --create-namespace
 ```
