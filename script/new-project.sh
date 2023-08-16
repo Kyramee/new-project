@@ -1,7 +1,7 @@
 #!/bin/bash
 print_usage() {
-  echo "Usage: $(basename "$0") [namespace] [group] [OPTION]..."
   echo ""
+  echo "Usage: $(basename "$0") [namespace] [group] [OPTION]..."
   echo "Arguments:"
   echo " [namespace]: Name of the project"
   echo " [group]: Name of the group that own the project"
@@ -67,4 +67,4 @@ then
   oc label group $2 app.kubernetes.io/managed-by=Helm --overwrite > /dev/null
 fi
 
-helm install $1 $CHART_PATH/ -f values.yaml --namespace $NAMESPACE $CREATE_NAMESPACE
+helm install $1 $CHART_PATH/ -f values.yaml --namespace $2 $CREATE_NAMESPACE
